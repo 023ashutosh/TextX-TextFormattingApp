@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 export default function TextForm(props) {
-
   const handleOnChange = (e) => {
     settext(e.target.value);
   };
@@ -9,32 +8,33 @@ export default function TextForm(props) {
   const toUpper = () => {
     let UpperText = text.toUpperCase();
     settext(UpperText);
-    props.showAlert("Converted to Upper Case!","success")
+    props.showAlert("Converted to Upper Case!", "success");
   };
 
   const toLower = () => {
     let LowerText = text.toLowerCase();
     settext(LowerText);
-    props.showAlert("Converted to Lower Case!","success")
+    props.showAlert("Converted to Lower Case!", "success");
   };
 
   const toCapitalase = () => {
-    let CapitalText = text.replace( /(^\w|\.\s*\w)/g, (match) => match.toUpperCase() );
+    let CapitalText = text.replace(/(^\w|\.\s*\w)/g, (match) =>
+      match.toUpperCase()
+    );
     settext(CapitalText);
-    props.showAlert("Converted first letter to Upper Case!","success")
+    props.showAlert("Converted first letter to Upper Case!", "success");
   };
 
   const toClear = () => {
     let ClearText = "";
     settext(ClearText);
-    props.showAlert("Cleared text area!","success")
+    props.showAlert("Cleared text area!", "success");
   };
 
   const handleCopy = () => {
-    
     let copyText = document.getElementById("myBox");
     navigator.clipboard.writeText(copyText.value);
-    props.showAlert("Copied text!","success")
+    props.showAlert("Copied text!", "success");
   };
 
   const [text, settext] = useState("Enter text here");
@@ -64,7 +64,7 @@ export default function TextForm(props) {
           <button
             className={`btn btn-${
               props.mode === "light" ? "success" : "warning"
-            } mx-1`}
+            } mx-1 my-1`}
             onClick={toUpper}
           >
             Upper Case
@@ -72,7 +72,7 @@ export default function TextForm(props) {
           <button
             className={`btn btn-${
               props.mode === "light" ? "success" : "warning"
-            } mx-1`}
+            } mx-1 my-1`}
             onClick={toLower}
           >
             Lower Case
@@ -80,7 +80,7 @@ export default function TextForm(props) {
           <button
             className={`btn btn-${
               props.mode === "light" ? "success" : "warning"
-            } mx-1`}
+            } mx-1 my-1`}
             onClick={toCapitalase}
           >
             Capital Case
@@ -88,7 +88,7 @@ export default function TextForm(props) {
           <button
             className={`btn btn-${
               props.mode === "light" ? "success" : "warning"
-            } mx-1`}
+            } mx-1 my-1`}
             onClick={toClear}
           >
             Clear
@@ -96,7 +96,7 @@ export default function TextForm(props) {
           <button
             className={`btn btn-${
               props.mode === "light" ? "success" : "warning"
-            } mx-1`}
+            } mx-1 my-1`}
             onClick={handleCopy}
           >
             Copy
@@ -110,11 +110,23 @@ export default function TextForm(props) {
         >
           <h3>Your text summary</h3>
           <p>
-            <b>{text.split(" ").length}</b> words, <b>{text.length}</b>{" "}
-            characters
+            <b>
+              {
+                text.split(" ").filter((element) => {
+                  return element.length !== 0;
+                }).length
+              }
+            </b>{" "}
+            words, <b>{text.length}</b> characters
           </p>
           <p>
-            <b>{text.split(" ").length * 0.008}</b> Minutes read
+            <b>
+              {
+                text.split(" ").filter((element) => {
+                return element.length !== 0;
+              }).length * 0.008}
+            </b>{" "}
+            Minutes read
           </p>
           <h2>Preview</h2>
           <p>{text.length > 0 ? text : "Enter some text"}</p>
