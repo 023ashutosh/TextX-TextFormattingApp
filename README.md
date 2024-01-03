@@ -1,4 +1,4 @@
-#Text X1 - Text Formatting App
+## Text X1 - Text Formatting App
 ##Overview
 Text X1 is a simple and efficient text formatting app created using React. With Text X1, users can easily convert text to uppercase, lowercase, or clear the clipboard copy.
 
