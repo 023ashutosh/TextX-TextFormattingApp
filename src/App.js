@@ -28,6 +28,9 @@ function App() {
   };
 
   const toggleMode = () => {
+
+
+  
     if (mode === "dark") {
       setModeLabel("Dark Mode");
       setMode("light");
